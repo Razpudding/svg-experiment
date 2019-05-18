@@ -1,8 +1,16 @@
 /* ideas:
 * V Group relevant paths to be targeted with code later
-* - Create interesting visual effects like rotating highlighted triangle, ripple of color, color on hover.
+* V Create interesting visual effects like rotating highlighted triangle, ripple of color, color on hover.
+* - Add some buttons that allow different effects to be triggered
+* - Create the effect of a rising sun behind the figure
 * - Use Greensock to morph shapes (tring to circle?) and create scenes.
 * - Clean up image. Clean up spots on body
+*   - Identify top and bottom black half
+*   - Select all remaining elements as the body 
+* - Resources
+*   - Use this as inspiration: https://observablehq.com/@lemonnish/svg-path-animations-d3-transition
+*   - Morph triangles to circles using: https://bl.ocks.org/mbostock/3081153
+*   - This might be useful as well: https://css-tricks.com/animating-svg-css/
 */
 
 const colors = ['DAA520','4B2295', '263596', 'DAC320']
@@ -15,8 +23,7 @@ const third_eye = document.querySelector('#third_x5F_eye')
 const disco_eye = document.querySelector('#disco_x5F_eye')
 
 let allHidden = true
-//triang_lefts.forEach(t => t.addEventListener("mouseover", makeGolden))
-//triang_lefts.forEach(t => t.addEventListener("mouseout", makeBlack))
+
 third_eye.addEventListener("click", function(){flashAnim(triang_lefts)})
 disco_eye.addEventListener("click", function(){lightEmUp(allPaths)})
 //svg.addEventListener("click", function(){showOnebyOne(allPaths)})
@@ -24,7 +31,7 @@ disco_eye.addEventListener("click", function(){lightEmUp(allPaths)})
 orderBy(triang_lefts, 'y', false)
 orderBy(triang_rights, 'y', true)
 orderBy(allPaths, 'x', false)
-// svg.addEventListener("click", function(){lightEmUp(triang_lefts)})
+
 svg.addEventListener("click", function(){
   paintIt(triang_lefts, 'goldenrod', 30)
     .then(() => paintIt(triang_rights, 'goldenrod', 30))
